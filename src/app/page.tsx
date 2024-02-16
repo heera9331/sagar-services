@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { GiConsoleController } from "react-icons/gi";
 
 
 export default function Home() {
@@ -9,10 +10,7 @@ export default function Home() {
 
   const getServices = async () => {
     let res = await axios.get('/api/services');
-    if (res.statusText === 'OK') {
-      let data = await res.data;
-      setServices(data);
-    }
+    console.log(res);
   }
 
   useEffect(() => {

@@ -1,14 +1,43 @@
+CREATE TABLE IF NOT EXISTS `users` ( `name` varchar(32), `username` varchar(32) UNIQUE, `password` varchar(8) NOT NULL, `isAdmin` INTEGER DEFAULT 0, `createdAt` DATETIME DEFAULT CURRENT_TIMESTAMP );
+
+INSERT INTO `users` (`name`, `username`, `password`, `isAdmin`) VALUES ('Heera Singh', 'heera7242', '123456', 1), ('User', 'user123', '123456', 0);
+
+-----------------
+
+CREATE TABLE IF NOT EXISTS `categories` ( `id` TEXT UNIQUE, `name` TEXT, `parentCategoryId` INTEGER DEFAULT 0, `createdAt` DATETIME DEFAULT CURRENT_TIMESTAMP );
+
+INSERT INTO `categories` (`id`, `name`, `parentCategoryId`) VALUES (1, 'Home Service Provider', 0 ), (2, 'Education', 0 ), (3, 'Coaching', 2 );
+
+----------------------------
+CREATE TABLE IF NOT EXISTS `services` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+    `title` TEXT,
+    `description` TEXT,
+    `contact` TEXT,
+    `district` TEXT,
+    `address` TEXT,
+    `providerId` TEXT,
+    `categoryId` TEXT,
+    `createdAt` TEXT DEFAULT (STRFTIME('%Y-%m-%d %H:%M:%S', 'now'))
+);
+
+INSERT INTO `services` (`id`, `title`, `description`, `contact`, `providerId`)
+VALUES 
+    (1, 'MS OFFICE', 'In this course you will learn about Microsoft Office, All MS Office software like word, powerpoint, excel, acces.', '8085589371', 3);
+
+
+--------------------------------------
+
+CREATE TABLE IF NOT EXISTS `providers` (
+    `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+    `name` TEXT,
+    `mobile` TEXT,
+    `createdAt` TEXT DEFAULT (STRFTIME('%Y-%m-%d %H:%M:%S', 'now'))
+);
+
+INSERT INTO `providers` (`id`, `name`, `mobile`)
+VALUES 
+    (3, 'Heera Singh', '8085589371');
+
+
  
-CREATE TABLE IF NOT EXISTS `users` (
-    `name` TEXT, 
-    `username` TEXT UNIQUE, 
-    `password` TEXT, 
-    `isAdmin` INTEGER DEFAULT 0, 
-    `createAt` TEXT DEFAULT (CURRENT_TIMESTAMP)
-)
-
-CREATE TABLE `services` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` TEXT, `description` TEXT, `contact` TEXT, `district` TEXT, `address` TEXT, `providerId` TEXT, `categoryId` TEXT, `createdAt` TEXT DEFAULT (CURRENT_TIMESTAMP))
-
-CREATE TABLE `providers` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT, `mobile` TEXT, `createdAt` TEXT DEFAULT (CURRENT_TIMESTAMP))
-
-CREATE TABLE `users` (`name` TEXT, `username` TEXT UNIQUE, `password` TEXT, `isAdmin` INTEGER DEFAULT 0, `createAt` TEXT DEFAULT (CURRENT_TIMESTAMP))

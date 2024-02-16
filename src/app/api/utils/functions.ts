@@ -1,4 +1,4 @@
-import db from './db';
+import {conn} from '../utils/index';
 
 interface providerProp {
     name: string,
@@ -31,7 +31,7 @@ const validateService: boolean = (service: ServiceProps) => {
 }
 
 const dbQueryResult : object | null = async (sql : string) => {
-    let result = await db.run(sql);
+    let result = await conn.query(sql);
     console.log(result);
     return null
 } 

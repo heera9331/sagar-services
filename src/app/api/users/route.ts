@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import {db} from "../utils";
+import {conn} from "../utils/index";
 
 export async function GET(req: NextRequest) {
     try {
@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
 
         // Use await with a Promise to wait for the asynchronous operation to complete
         const rows = await new Promise<any[]>((resolve, reject) => {
-            db.all(selectDataSQL, [], (err: any, rows: any[]) => {
+            conn.all(selectDataSQL, [], (err: any, rows: any[]) => {
                 if (err) {
                     console.error('Error fetching users:', err);
                     reject(err); // Reject the Promise if there's an error

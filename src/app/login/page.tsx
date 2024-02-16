@@ -3,6 +3,7 @@
 import React, { useState, ReactHTMLElement } from "react"
 import { Button, Input } from "@/components";
 import axios from 'axios';
+import { useRouter } from "next/navigation";
 
 interface providerProp {
     username: string,
@@ -10,16 +11,27 @@ interface providerProp {
 }
 
 export default function Page() {
-
+    const router = useRouter();
     const [user, setUser] = useState<providerProp>({
         username: "",
         password: ""
     })
 
     const handleLogin = async () => {
-        console.log(user);
-        let res = await axios.post('/api/login', user);
-        console.log(res);
+        try {
+            console.log(user);
+            let res = await axios.post('/api/login', user);
+            if (res.statusText == "OK") {
+                let data = await res.data;
+                router.push('/')
+
+            } else {
+                alert(res.data?.error);
+            }
+        } catch (error) {
+            console.log(error)
+            alert('login error');
+        }
     }
 
     return (

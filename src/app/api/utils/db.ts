@@ -1,40 +1,19 @@
-const sqlite3 = require('sqlite3').verbose();
+import mysql from "mysql";
 
-// Open SQLite database connection
-// @ts-ignore
-const db : any = new sqlite3.Database('/data/database.db', (err: any) => {
+const conn = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'sagar-services'
+})
+
+// Connect to the database
+conn.connect((err) => {
     if (err) {
-        console.error('Error opening database:', err.message);
-    } else {
-        console.log('Connected to the SQLite database.');
+        console.error('Error connecting to MySQL database:', err);
+        throw err;
     }
+    console.log('Connected to MySQL database.');
 });
- 
-export default db;
 
-// Create a table
-// db.run(`
-//     CREATE TABLE IF NOT EXISTS users (
-//         id INTEGER PRIMARY KEY,
-//         username TEXT NOT NULL,
-//         password TEXT NOT NULL
-//     )
-// `, (err: any) => {
-//     if (err) {
-//         console.error('Error creating table:', err.message);
-//     } else {
-//         console.log('Table "users" created successfully.');
-//     }
-// });
-
-// db.run('insert into users (id, username, password) values (1, "heera7242", "123456")', (err:any, ack:any)=>{
-//     if(err) {
-//         console.log("error", err);
-//     }else { 
-//         console.log("created", ack);
-//     }
-// })
-
-
-
-
+export default conn;

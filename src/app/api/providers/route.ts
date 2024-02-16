@@ -1,16 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import db from '../utils/db';
+import {conn} from '../utils/index';
 
 export async function POST(req: NextRequest) {
     try {
-        console.log('request body', await req.json());
-
-//        const sql = "CREATE TABLE IF NOT EXISTS users (name varchar(32), username varchar(32), password varchar(32), isAdmin int,createAt datetime default CURRENT_TIMESTAMP);";
-//        db.run(sql, [], async(error: any, data: any) => {
-//            console.log('error', error);
-//            console.log('data', data);
-//        })
-        
+        console.log('request body', await req.json()); 
         return NextResponse.json({msg: "working"});
     } catch (error) {
         console.error('Fetching error:', error);
@@ -18,3 +11,21 @@ export async function POST(req: NextRequest) {
     }
 }
 
+
+export async function GET(req: NextRequest) {
+    // Construct the SQL query with parameters to prevent SQL injection
+    const sql = `SELECT id, name FROM providers;`;
+    const values: any[] = [];
+     
+    const rows = await new Promise<any[]>((resolve, reject) => {
+        conn.query(sql, values, (err: any, row: any[]) => {
+            if (err) {
+                console.error('Error fetching users:', err);
+                reject(err); // Reject the Promise if there's an error
+            } else {
+                resolve(row); // Resolve the Promise with the fetched rows
+            }
+        });
+    }); 
+    return NextResponse.json({ providers: rows }); 
+}
