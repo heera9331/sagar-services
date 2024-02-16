@@ -2,6 +2,7 @@
 
 import React, { useState, ReactHTMLElement } from "react"
 import { Button, Input } from "@/components";
+import axios from 'axios';
 
 interface providerProp {
     username: string,
@@ -14,6 +15,12 @@ export default function Page() {
         username: "",
         password: ""
     })
+
+    const handleLogin = async () => {
+        console.log(user);
+        let res = await axios.post('/api/login', user);
+        console.log(res);
+    }
 
     return (
         <div className="flex flex-col items-center justify-center m-auto min-h-[70vh]">
@@ -43,9 +50,9 @@ export default function Page() {
                 <div className="flex mt-2 items-center justify-center">
                     <Button
                         text="Login"
-                        onClick={() => {
-                            console.log(user);
-
+                        onClick={(e: React.FormEvent) => {
+                            e.preventDefault();
+                            handleLogin();
                         }}
                     />
                 </div>
