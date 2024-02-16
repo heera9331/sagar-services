@@ -1,0 +1,14 @@
+ 
+CREATE TABLE IF NOT EXISTS `users` (
+    `name` TEXT, 
+    `username` TEXT UNIQUE, 
+    `password` TEXT, 
+    `isAdmin` INTEGER DEFAULT 0, 
+    `createAt` TEXT DEFAULT (CURRENT_TIMESTAMP)
+)
+
+CREATE TABLE `services` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `title` TEXT, `description` TEXT, `contact` TEXT, `district` TEXT, `address` TEXT, `providerId` TEXT, `categoryId` TEXT, `createdAt` TEXT DEFAULT (CURRENT_TIMESTAMP))
+
+CREATE TABLE `providers` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT, `mobile` TEXT, `createdAt` TEXT DEFAULT (CURRENT_TIMESTAMP))
+
+CREATE TABLE `users` (`name` TEXT, `username` TEXT UNIQUE, `password` TEXT, `isAdmin` INTEGER DEFAULT 0, `createAt` TEXT DEFAULT (CURRENT_TIMESTAMP))
