@@ -36,6 +36,7 @@ const Input: React.FC<InputProps> = ({
                 name={htmlFor}
                 onChange={onChange}
                 {...props}
+                required
             />
         </div>
     );

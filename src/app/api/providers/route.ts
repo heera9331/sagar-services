@@ -3,7 +3,8 @@ import {conn} from '../utils/index';
 
 export async function POST(req: NextRequest) {
     try {
-        console.log('request body', await req.json()); 
+        let provider = await req.json();
+        
         return NextResponse.json({msg: "working"});
     } catch (error) {
         console.error('Fetching error:', error);

@@ -1,12 +1,13 @@
 "use client"
 
-import React, { useState, ReactHTMLElement } from "react"
+import React, { useState, ReactHTMLElement, useEffect } from "react"
 import { Button, Input } from "@/components";
 import axios from "axios";
+
 interface providerProp {
     name: string,
     mobile: string,
-    district: string 
+    district: string
 }
 
 export default function Page() {
@@ -15,13 +16,14 @@ export default function Page() {
         mobile: "",
         district: ""
     })
-    
-    const handleSubmit : React.FormEventHandler = async (e: React.FormEvent) => {
+
+
+    const handleSubmit: React.FormEventHandler = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             let res = await axios.post('/api/providers', provider);
             console.log(res);
-        } catch(error: any) {
+        } catch (error: any) {
             console.log('error while posting', error);
         }
     }
