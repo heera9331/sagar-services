@@ -30,7 +30,7 @@ const Input: React.FC<InputProps> = ({
             <input
                 type={type ? type : "text"}
                 value={value}
-                className={` p-1 border-2 rounded-sm focus: outline-none ${className} ${inputColor ? inputColor : "text-black bg-slate-100"
+                className={` p-1 border border-black border-opacity-25 rounded-sm focus: outline-none ${className} ${inputColor ? inputColor : "text-black bg-slate-100"
                     }`}
                 placeholder={placeholder ? placeholder : ""}
                 name={htmlFor}

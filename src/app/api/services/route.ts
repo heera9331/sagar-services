@@ -2,12 +2,20 @@
 // @ts-nocheck
 // @ts-expect-error
 
+
 import { NextRequest, NextResponse } from 'next/server';
 import { conn } from "../utils/index";
 
 export async function GET(req: NextRequest) {
     // Construct the SQL query with parameters to prevent SQL injection
-    const sql = `SELECT * FROM services;`;
+    const id = req.nextUrl.searchParams.get('id') ||  null;
+      
+    let sql = `SELECT services.id, title, description, district, categories.name as category, providers.name as provider FROM services
+    join categories on categories.id = services.categoryId
+    join providers on providers.id = services.providerId    
+    ${id ? "WHERE services.id=" + id : ""};`; 
+    console.log(sql);
+
     const values = [];
 
     const row = await new Promise<any[]>((resolve, reject) => {
@@ -20,7 +28,7 @@ export async function GET(req: NextRequest) {
             }
         });
     });
-    return NextResponse.json({ user: row });
+    return NextResponse.json({ services: row });
 }
 
 export async function POST(req: NextRequest) {
@@ -57,7 +65,7 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ msg: "service added successfully" });
         } else {
             return NextResponse.json({ error: "something went wrong" });
-        } 
+        }
     } catch (error: any) {
         console.log('error', error);
         return NextResponse.json({ error });

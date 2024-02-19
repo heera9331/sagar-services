@@ -32,7 +32,7 @@ export default function Page() {
         <div className="">
             <h1 className="text-2xl font-semibold ">Add A New Service Provider</h1>
 
-            <div className="w-[450px] m-auto p-4 shadow-md">
+            <div className="w-[450px] m-auto p-4 rounded-sm shadow-md border border-black border-opacity-25">
 
                 <Input
                     type="text"

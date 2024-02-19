@@ -60,7 +60,7 @@ export default function Page() {
         <div className="">
             <h1 className="text-2xl font-semibold ">Add A New Category</h1>
 
-            <div className="w-[450px] m-auto p-4 shadow-md">
+            <div className="w-[450px] m-auto rounded-sm shadow-md p-4 border border-black border-opacity-25">
                 <Input
                     type="text"
                     htmlFor="Category"

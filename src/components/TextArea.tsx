@@ -19,7 +19,7 @@ const Input = ({
             <textarea
                 value={value}
                 onChange={onChange}
-                className={` p-1 border-2 rounded-sm focus: outline-none text-black bg-slate-100 ${className} `}
+                className={` p-1 border border-black border-opacity-25 rounded-sm focus: outline-none text-black bg-slate-100 ${className} `}
                 {...props}
             />
         </div>

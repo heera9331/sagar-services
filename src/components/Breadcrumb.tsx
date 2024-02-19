@@ -10,8 +10,8 @@ export default function Breadcrumbs({ path } : pathProps) {
     const segments = path.split('/').filter(segment => segment);
 
     return (
-        <nav className="bg-gray-100 py-2 px-4">
-            <ol className="list-none flex text-gray-500">
+        <nav className=" py-2 px-4 border-b border-black border-opacity-25">
+            <ol className="list-none flex">
                 <li className="flex items-center">
                     <Link href="/">
                         Home
