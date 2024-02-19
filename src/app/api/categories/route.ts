@@ -4,6 +4,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { conn } from "../utils/index";
+import { hasCategory } from "@/app/api/utils/functions";
 
 export async function GET(req: NextRequest) {
     // Construct the SQL query with parameters to prevent SQL injection
@@ -27,16 +28,20 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
     let category: { name: string, providerId: number, parentCategoryId: number } = await req.json();
 
-    let name = category.name;
-    let providerId = category.providerId
-    let parentCategoryId = category.parentCategoryId;
+    console.log(category);
 
-    if (!name || !providerId || !parentCategoryId) {
+    let { name, parentCategoryId } = category;
+
+
+    if (!name) {
         return NextResponse.json({ error: "missing fields" });
+    }
+    if (hasCategory(name)) {
+        return NextResponse.json({ error: "category already exist" });
     }
 
     const sql = `
-        INSERT INTO categories (name, parentCategoryId, providerId) values('${name}', '${parentCategoryId}', ${providerId});
+        INSERT INTO categories (name, parentCategoryId) values('${name}', '${parentCategoryId}');
     `;
 
     let ack = new Promise((resolve, reject) => {
@@ -55,7 +60,7 @@ export async function POST(req: NextRequest) {
 
     ack = await ack;
     if (ack) {
-        return NextResponse.json({ msg: "service added successfully" });
+        return NextResponse.json({ msg: "category added successfully" });
     } else {
         return NextResponse.json({ error: "something went wrong" });
     }
