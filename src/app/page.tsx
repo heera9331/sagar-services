@@ -45,14 +45,14 @@ export default function Home() {
     <div className="flex min-h-[90vh] max-h-[90vh]">
       <aside className="p-4 border-r border-black border-opacity-25 columns-sm">
         <div className="flex flex-col">
-          <h3 className="font-semibold">Filters</h3>
+
           <div className="flex flex-col">
 
             <div className="flex flex-col gap-2 m-1 p-1">
               <input type="search" placeholder="Search here..."
                 className="py-1 px-4 rounded-sm text-black border border-black border-opacity-25 focus:outline-none focus:border-b-1" />
             </div>
-
+            <h3 className="font-semibold">Filters</h3>
             <div className="flex flex-col gap-2 m-1 p-1">
               <label htmlFor="district">District</label>
               <select name="district" id="district" className="bg-slate-100">
