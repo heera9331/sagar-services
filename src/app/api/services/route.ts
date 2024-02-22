@@ -4,15 +4,15 @@
 
 
 import { NextRequest, NextResponse } from 'next/server';
-import { conn } from "../utils/index";
+import { conn } from "@/utils/index";
 
 export async function GET(req: NextRequest) {
     // Construct the SQL query with parameters to prevent SQL injection
-      
+
     let sql = `SELECT services.id, title, description, district, categories.name as category, providers.name as provider FROM services
     join categories on categories.id = services.categoryId
     join providers on providers.id = services.providerId    
-     ;`; 
+     ;`;
     console.log(sql);
 
     const values = [];

@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import {conn} from "../utils/index";
+import { conn } from "@/utils/index";
 
 export async function GET(req: NextRequest) {
     try {
@@ -30,10 +30,10 @@ export async function GET(req: NextRequest) {
 async function POST(req: NextRequest) {
     try {
         console.log(await req.json());
-          // const sql = "INSERT INTO users (name, username, password, isAdmin), VALUE()"
-        return NextResponse.json({msg: "Working" });
-    } catch(error: any) {
-        return NextResponse.json({error});
+        // const sql = "INSERT INTO users (name, username, password, isAdmin), VALUE()"
+        return NextResponse.json({ msg: "Working" });
+    } catch (error: any) {
+        return NextResponse.json({ error });
     }
 }
 

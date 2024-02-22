@@ -3,8 +3,8 @@
 // @ts-expect-error
 
 import { NextRequest, NextResponse } from 'next/server';
-import { conn } from "../utils/index";
-import { hasCategory } from "@/app/api/utils/functions";
+import { conn } from "@/utils/index";
+import { hasCategory } from "@/utils/functions";
 
 export async function GET(req: NextRequest) {
     // Construct the SQL query with parameters to prevent SQL injection

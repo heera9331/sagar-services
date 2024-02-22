@@ -1,4 +1,4 @@
-import { conn } from '../utils/index';
+import { conn } from './index';
 
 interface providerProp {
     name: string,

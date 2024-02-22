@@ -1,12 +1,12 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import { conn } from "../utils/index";
- 
+import { conn } from "@/utils/index";
+
 
 export async function POST(req: NextRequest) {
     try {
         // Parse JSON body from the request
-        const user : { username: string; password: string }= await req.json();
+        const user: { username: string; password: string } = await req.json();
 
         console.log(user);
 
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
         // Construct the SQL query with parameters to prevent SQL injection
         const sql = `SELECT username, isAdmin FROM users WHERE username=? AND password=? limit 1`;
         const values = [user.username, user.password];
-         
+
         const row = await new Promise<any[]>((resolve, reject) => {
             conn.query(sql, values, (err: any, row: any[]) => {
                 if (err) {
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
                     resolve(row); // Resolve the Promise with the fetched rows
                 }
             });
-        }); 
+        });
         return NextResponse.json({ user: row });
     } catch (error) {
         console.error('Error parsing JSON from request:', error);
