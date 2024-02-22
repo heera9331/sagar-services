@@ -57,10 +57,9 @@ export default function Page() {
     }, [])
 
     return (
-        <div className="">
-            <h1 className="text-2xl font-semibold ">Add A New Category</h1>
-
+        <div className="flex items-center min-h-[90vh]">
             <div className="w-[450px] m-auto rounded-sm shadow-md p-4 border border-black border-opacity-25">
+                <h1 className="text-2xl font-semibold text-gray-600">Add A New Category</h1>
                 <Input
                     type="text"
                     htmlFor="Category"

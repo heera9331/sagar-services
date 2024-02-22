@@ -70,9 +70,9 @@ export default function Page() {
     }, [])
 
     return (
-        <div className="mb-10">
-            <h1 className="text-2xl font-semibold ">Add A New Service</h1>
+        <div className="flex items-center min-h-[100vh]">
             <form action="#" method="post" onSubmit={(e: FormEvent) => { handleSubmit(e) }} className="w-[450px] m-auto p-4 rounded-sm shadow-md border border-black border-opacity-25">
+                <h1 className="text-2xl font-semibold text-gray-600 ">Add A New Service</h1>
                 <Input
                     type="text"
                     htmlFor="title"
