@@ -36,7 +36,6 @@ export default function Page() {
 
     return (
         <div className="flex flex-col items-center justify-center m-auto min-h-[70vh]">
-            <h1 className="text-2xl font-semibold ">Login</h1>
             <div className="w-[450px] m-auto px-2  py-4 shadow-md shadow-gray-400">
                 <Input
                     type="text"
