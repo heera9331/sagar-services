@@ -43,6 +43,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-[90vh] max-h-[90vh]">
+      {/* left sidebar */}
       <aside className="p-4 border-r border-black border-opacity-25 columns-sm">
         <div className="flex flex-col">
 
@@ -73,11 +74,13 @@ export default function Home() {
           </div>
         </div>
       </aside>
+
+      {/* main display services */}
       <div className="px-4 flex">
         <main className="text-black overflow-x-hidden overflow-y-auto" style={{ scrollBehavior: "smooth" }}>
           <div className="">
-            {services.length && (services.map((service) => {
-              return <div className="p-4 my-4 text-gray-800 flex flex-col gap-2 border border-black border-opacity-25 rounded-sm" key={service.id}>
+            {services.length > 0 && services.map((service) => (
+              <div className="p-4 my-4 text-gray-800 flex flex-col gap-2 border border-black border-opacity-25 rounded-sm" key={service.id}>
                 <h3 className="text-xl font-semibold flex items-center">
                   <MdOutlineMiscellaneousServices className="text-3xl" />
                   <span>{service.title}</span>
@@ -104,12 +107,13 @@ export default function Home() {
                     text="View More"
                     className="bg-gray-100"
                     onClick={() => {
-                      router.push(`/service?id=${service.id}`)
+                      router.push(`/${service.id}`)
                     }}
                   />
                 </div>
               </div>
-            }))}
+            ))}
+
           </div>
         </main>
         <aside className="min-w-[250px]">

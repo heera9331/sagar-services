@@ -13,7 +13,8 @@ export async function GET(req: NextRequest) {
     join categories on categories.id = services.categoryId
     join providers on providers.id = services.providerId    
      ;`;
-    console.log(sql);
+    
+    //  console.log(sql);
 
     const values = [];
 

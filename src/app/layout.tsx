@@ -8,7 +8,7 @@ import React from "react";
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   const path = usePathname();
-  console.log(path)
+  // console.log(path)
 
   return (
     <html lang="en">
