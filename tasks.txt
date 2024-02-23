@@ -6,3 +6,6 @@
 20-02-2024 - make single service page
 22-02-2024 - create search functionality
 22-02-2024 - create search functionality with filters
+
+// TODO: 2
+- apply prisma library
