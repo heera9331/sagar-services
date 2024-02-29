@@ -8,4 +8,4 @@
 22-02-2024 - create search functionality with filters
 
 // TODO: 2
-- apply prisma library
+// search implemented in php project
