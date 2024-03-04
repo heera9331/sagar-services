@@ -9,3 +9,8 @@
 
 // TODO: 2
 // search implemented in php project
+
+// TODO: 3
+// bookings
+
+// mobile responsive
